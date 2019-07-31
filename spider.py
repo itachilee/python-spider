@@ -25,8 +25,10 @@ def translate(i):
     Form_Data['action'] = 'FY_BY_REALTlME'
     # 使用urlencode方法转换标准格式
     data = parse.urlencode(Form_Data).encode('utf-8')
+    #创建request对象
+    req=request.Request(Request_URL,headers=header,data=data)
     # 传递Request对象和转换完格式的数据
-    response = request.urlopen(Request_URL, data)
+    response = request.urlopen(req)
     # 读取信息并解码
     html = response.read().decode('utf-8')
     # 使用JSON
