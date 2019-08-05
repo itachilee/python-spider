@@ -1,13 +1,16 @@
 # -*-coding:utf-8 -*-
-# Website: http://cuijiahua.com
-# Author: Jack Cui
-# Date: 2018.6.9
-
-import requests, json, re, sys, os, urllib, argparse, time
-from urllib.request import urlretrieve
 from contextlib import closing
 from urllib import parse
+
+import argparse
+import json
+import os
+import re
+import requests
+import sys
+import time
 import xml2ass
+
 
 class BiliBili:
 	def __init__(self, dirname, keyword):

@@ -6,12 +6,13 @@ import sys
 
 def download():
     #  创建txt文件
-    file = open('一念永恒.txt', 'w', encoding='utf-8')
-    # 一念永恒小说目录地址
-    target_url = 'http://www.biqukan.com/1_1094/'
+    file = open('元尊.txt', 'w', encoding='utf-8')
+    # 小说目录地址
+    target_url = 'https://www.biqukan.com/0_790/'
     # User-Agent
     head = {}
     head['User-Agent'] = 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19'
+    # 建议使用代理　防止被封ip
     target_req = request.Request(url = target_url, headers = head)
     target_response = request.urlopen(target_req)
     target_html = target_response.read().decode('gbk','ignore')
@@ -31,12 +32,12 @@ def download():
     for child in download_soup.dl.children:
         # 滤除回车
         if child != '\n':
-            # 找到《一念永恒》正文卷,使能标志位
-            if child.string == u"《一念永恒》正文卷":
+            # 找到《元尊》正文卷,使能标志位
+            if child.string == u"《元尊》正文卷":
                 begin_flag = True
             # 爬取链接并下载链接内容
             if begin_flag == True and child.a != None:
-                print("downloading...")
+                # print("downloading...")
                 download_url = "http://www.biqukan.com" + child.a.get('href')
                 download_req = request.Request(url = download_url, headers = head)
                 download_response = request.urlopen(download_req)
