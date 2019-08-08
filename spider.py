@@ -40,4 +40,5 @@ def translate(i):
 
 
 if __name__ == '__main__':
-    translate('today is sunny')
+    i = input()
+    translate(i)
